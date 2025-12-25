@@ -14,7 +14,7 @@ SRC_URI = "${UBOOT_SRC};branch=${SRCBRANCH}"
 UBOOT_SRC ?= "git://github.com/zhuzhengjing/u-boot-imx-frdm.git;protocol=https"
 SRCBRANCH = "main"
 LOCALVERSION ?= "-${SRCBRANCH}"
-SRCREV = "b94d47fb8a1fd3161741ef78e57e1a2925c58cf8"
+SRCREV = "75cec6437bee8aadddc0fc140433d5ebdeb440b3"
 
 DEPENDS += " \
     bc-native \

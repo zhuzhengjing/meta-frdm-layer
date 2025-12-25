@@ -63,5 +63,6 @@ IMAGE_INSTALL += " \
     i2c-tools \
     glibc-utils glibc-gconv \
     tzdata-core tzdata-asia \
+    device-service \
     baresip \
 "
