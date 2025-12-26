@@ -65,4 +65,5 @@ IMAGE_INSTALL += " \
     tzdata-core tzdata-asia \
     device-service \
     baresip \
+    lvgl-demo-fb \
 "
