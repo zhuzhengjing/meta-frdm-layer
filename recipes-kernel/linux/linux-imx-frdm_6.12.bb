@@ -22,7 +22,7 @@ LINUX_IMX_SRC ?= "git://github.com/zhuzhengjing/linux-imx-frdm.git;protocol=http
 SRCBRANCH = "main"
 KBRANCH = "${SRCBRANCH}"
 LOCALVERSION = "-v1.0.0"
-SRCREV = "15a482ae8f02a5f8c0049b193e9a6ca6e2fe718e"
+SRCREV = "b67634a3131f6a8213667e28b6d068b688add839"
 
 # PV is defined in the base in linux-imx.inc file and uses the LINUX_VERSION definition
 # required by kernel-yocto.bbclass.

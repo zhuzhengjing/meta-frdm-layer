@@ -11,6 +11,8 @@ EXTRA_USERS_PARAMS = "\
     "
 
 IMAGE_FEATURES += " \
+    tools-profile \
+    tools-sdk \
     package-management \
     ssh-server-openssh \
     splash \
