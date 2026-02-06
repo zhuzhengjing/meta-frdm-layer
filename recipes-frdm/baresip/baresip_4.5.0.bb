@@ -2,7 +2,7 @@ SUMMARY = "Baresip - A modular SIP User-Agent"
 HOMEPAGE = "https://github.com/baresip/baresip"
 LICENSE = "CLOSED"
 
-SRC_URI = "git://github.com/baresip/baresip.git;protocol=https;branch=main \
+SRC_URI = "git://git@github.com/sz-annax/baresip.git;protocol=ssh;branch=main \
            file://com.github.Baresip.conf \
            file://baresip.service \
            file://config \
@@ -11,13 +11,17 @@ SRC_URI = "git://github.com/baresip/baresip.git;protocol=https;branch=main \
            file://my_call_receiver.wav \
            file://my_hang_up.wav"
 
-# v3.24.0 - 2025-07-09
-SRCREV = "42286be6b221398c0523165352a37a5b26ed0af0"
+# v4.5.0 - 2026-02-27
+SRCREV = "a28b523ceabb0d61c8e4813cb9413b656d17682a"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "re openssl alsa-lib pipewire libopus glib-2.0 glib-2.0-native python3-packaging-native"
-RDEPENDS:${PN} += "glib-2.0"
+DEPENDS = "re openssl alsa-lib pipewire libopus glib-2.0 glib-2.0-native python3-packaging-native \
+           gstreamer1.0 gstreamer1.0-plugins-base lvgl \
+           v4l-utils x264 libvpx"
+RDEPENDS:${PN} += "glib-2.0 gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good \
+                   gstreamer1.0-plugins-bad lvgl \
+                   v4l-utils x264 libvpx"
 
 inherit cmake pkgconfig systemd python3native
 

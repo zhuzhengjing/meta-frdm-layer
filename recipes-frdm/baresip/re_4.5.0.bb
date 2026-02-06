@@ -4,8 +4,8 @@ HOMEPAGE = "https://github.com/baresip/re"
 LICENSE = "CLOSED"
 
 SRC_URI = "git://github.com/baresip/re.git;protocol=https;branch=main"
-# v3.24.0 - 2025-07-09
-SRCREV = "16bb5c7662029def4b62b4ba686fd5d0c029086c"
+# v4.5.0 - 2026-02-27
+SRCREV = "67bebeb7db6c575b098b82242c733c6f245ff64c"
 
 S = "${WORKDIR}/git"
 
