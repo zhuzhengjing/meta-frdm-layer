@@ -1,5 +1,5 @@
 
-SUMMARY = "A image for PCU video v2 development"
+SUMMARY = "A image for NXP i.MX FRDM development"
 LICENSE = "MIT"
 
 inherit core-image extrausers
@@ -12,7 +12,6 @@ EXTRA_USERS_PARAMS = "\
 
 IMAGE_FEATURES += " \
     tools-profile \
-    tools-sdk \
     package-management \
     ssh-server-openssh \
     splash \
@@ -24,7 +23,6 @@ IMAGE_FEATURES += " \
 
 CORE_IMAGE_EXTRA_INSTALL += " \
     packagegroup-core-full-cmdline \
-    packagegroup-fsl-tools-audio \
     packagegroup-fsl-gstreamer1.0 \
     packagegroup-fsl-gstreamer1.0-full \
     packagegroup-app-tools \
@@ -68,4 +66,5 @@ IMAGE_INSTALL += " \
     device-service \
     baresip \
     lvgl-demo-fb \
+    frdm-app \
 "
