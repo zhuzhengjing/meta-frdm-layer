@@ -5,7 +5,7 @@
 #------------------------------------------------------------------------------
 
 # SIP
-sip_listen             0.0.0.0:5060
+sip_listen              0.0.0.0:5060
 #sip_certificate        cert.pem
 sip_cafile              /etc/ssl/certs/ca-certificates.crt
 sip_capath              /etc/ssl/certs
@@ -25,27 +25,27 @@ call_accept             no
 
 # Audio
 #audio_path             /usr/share/baresip
-audio_player            pipewire,"Echo Cancellation Sink"
-audio_source            pipewire,"Echo Cancellation Source"
-audio_alert             pipewire,"Echo Cancellation Sink"
+audio_player            alsa,default
+audio_source            alsa,default
+audio_alert             alsa,default
 #ausrc_srate            48000
 #auplay_srate           48000
-#ausrc_channels         0
-#auplay_channels        0
+ausrc_channels          1
+auplay_channels         1
 #audio_txmode           poll            # poll, thread
 audio_level             no
 ausrc_format            s16             # s16, float, ..
 auplay_format           s16             # s16, float, ..
 auenc_format            s16             # s16, float, ..
 audec_format            s16             # s16, float, ..
-audio_buffer            20-160          # ms
+audio_buffer            20-60           # ms
 audio_buffer_mode       fixed           # fixed, adaptive
 audio_silence           -35.0           # in [dB]
 audio_telev_pt          101             # payload type for telephone-event
 
 # Video
 #video_source           v4l2,/dev/video0
-#video_display          x11,nil
+video_display           lvgl_ui
 video_size              640x480
 video_bitrate           1000000
 video_fps               30.00
@@ -58,7 +58,7 @@ rtp_video_tos           136
 #rtp_ports              10000-20000
 #rtp_bandwidth          512-1024 # [kbit/s]
 audio_jitter_buffer_type        fixed           # off, fixed, adaptive
-audio_jitter_buffer_delay       5-10            # (min. frames)-(max. packets)
+audio_jitter_buffer_delay       1-3             # (min. frames)-(max. packets)
 video_jitter_buffer_type        fixed           # off, fixed, adaptive
 video_jitter_buffer_delay       5-50            # (min. frames)-(max. packets)
 rtp_stats               no
@@ -90,7 +90,7 @@ module_path             /usr/lib/baresip/modules
 #module                 httpd.so
 
 # Audio codec Modules (in order)
-#module                  opus.so
+module                  opus.so
 module                  amr.so
 module                  g7221.so
 module                  g722.so
@@ -106,12 +106,12 @@ module                  auresamp.so
 #module                 vumeter.so
 #module                 sndfile.so
 #module                 plc.so
-#module                 webrtc_aec.so
+module                  webrtc_aec.so
 
 # Audio driver Modules
 module                  alsa.so
 #module                 pulse.so
-module                  pipewire.so
+#module                 pipewire.so
 #module                 jack.so
 #module                 portaudio.so
 #module                 aubridge.so
@@ -179,10 +179,14 @@ module_app              menu.so
 module_app              ctrl_dbus.so
 #module_app             httpreq.so
 module_app              netroam.so
-
+module_app              lvgl_ui.so
 
 #------------------------------------------------------------------------------
 # Module parameters
+
+# webrtc_aec
+webrtc_aec_extended_filter yes
+webrtc_aec_stream_delay   0              # 0=auto, or manual ms (e.g. 40)
 
 # DTLS SRTP parameters
 #dtls_srtp_use_ec       prime256v1
@@ -197,10 +201,13 @@ ctrl_tcp_listen         0.0.0.0:4444 # ctrl_tcp - TCP interface JSON
 
 evdev_device            /dev/input/event0
 
+# HDMI card0
+lvgl_ui_device          /dev/dri/card0
+
 # Opus codec parameters
 opus_bitrate            28000 # 6000-510000
-#opus_stereo            yes
-#opus_sprop_stereo      yes
+opus_stereo             no
+opus_sprop_stereo       no
 #opus_cbr               no
 opus_inbandfec         no
 opus_dtx               no

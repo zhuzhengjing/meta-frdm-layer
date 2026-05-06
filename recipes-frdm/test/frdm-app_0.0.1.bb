@@ -6,7 +6,7 @@ SRC_URI = "git://git@github.com/zhuzhengjing/frdm-app.git;protocol=ssh;branch=ma
            file://frdm-app.service \
            file://my-echo-cancel.conf \
         "
-SRCREV = "ad942963708d47728f3f30e3418e46cc53fd8fbc"
+SRCREV = "5b0c255515b1122264a384b1682272d4cdb51cf9"
 
 S = "${WORKDIR}/git"
 
@@ -22,7 +22,7 @@ do_install() {
 
     # systemd service
     install -d ${D}${systemd_system_unitdir}
-    install -m 0644 ${UNPACKDIR}/${PN}.service ${D}${systemd_system_unitdir}/
+    install -m 0644 ${UNPACKDIR}/${PN}.service ${D}${systemd_system_unitdir}/${PN}.service
 
     # my-echo-cancel.conf
     install -d ${D}${sysconfdir}/pipewire/pipewire.conf.d

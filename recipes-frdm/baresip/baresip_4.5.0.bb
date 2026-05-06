@@ -9,19 +9,21 @@ SRC_URI = "git://git@github.com/sz-annax/baresip.git;protocol=ssh;branch=main \
            file://accounts \
            file://my_phone_calling.wav \
            file://my_call_receiver.wav \
-           file://my_hang_up.wav"
+           file://my_hang_up.wav \
+           file://1.png \
+"
 
-# v4.5.0 - 2026-02-27
-SRCREV = "a28b523ceabb0d61c8e4813cb9413b656d17682a"
+# v4.5.0
+SRCREV = "06050e7cacfe24ec9bfbee9d73d5f6a10ce1ec54"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "re openssl alsa-lib pipewire libopus glib-2.0 glib-2.0-native python3-packaging-native \
+DEPENDS = "re openssl alsa-lib libopus glib-2.0 glib-2.0-native python3-packaging-native \
            gstreamer1.0 gstreamer1.0-plugins-base lvgl \
-           v4l-utils x264 libvpx"
+           v4l-utils x264 libvpx webrtc-audio-processing-2"
 RDEPENDS:${PN} += "glib-2.0 gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good \
                    gstreamer1.0-plugins-bad lvgl \
-                   v4l-utils x264 libvpx"
+                   v4l-utils x264 libvpx webrtc-audio-processing-2"
 
 inherit cmake pkgconfig systemd python3native
 
@@ -45,6 +47,7 @@ do_install:append() {
     install -m 0644 ${UNPACKDIR}/my_phone_calling.wav ${D}${datadir}/${PN}/
     install -m 0644 ${UNPACKDIR}/my_call_receiver.wav ${D}${datadir}/${PN}/
     install -m 0644 ${UNPACKDIR}/my_hang_up.wav ${D}${datadir}/${PN}/
+    install -m 0644 ${UNPACKDIR}/1.png ${D}${datadir}/${PN}/
 }
 
 FILES:${PN} += "${sysconfdir}/baresip"
