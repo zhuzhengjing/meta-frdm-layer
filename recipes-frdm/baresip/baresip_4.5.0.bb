@@ -14,7 +14,7 @@ SRC_URI = "git://git@github.com/sz-annax/baresip.git;protocol=ssh;branch=main \
 "
 
 # v4.5.0
-SRCREV = "06050e7cacfe24ec9bfbee9d73d5f6a10ce1ec54"
+SRCREV = "f4d23783484fc4ea66bf4f53501c06ade5444561"
 
 S = "${WORKDIR}/git"
 
